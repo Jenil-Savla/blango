@@ -47,6 +47,7 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'django.contrib.sites',
         'django.contrib.staticfiles',
         'crispy_forms',
         'crispy_bootstrap5',
@@ -54,6 +55,10 @@ class Dev(Configuration):
         #myapps
         'blango_auth',
         'blog',
+        "allauth", 
+        "allauth.account", 
+        "allauth.socialaccount", 
+        "allauth.socialaccount.providers.google",
     ]
 
     AUTH_USER_MODEL = "blango_auth.User"
@@ -61,6 +66,13 @@ class Dev(Configuration):
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
     ACCOUNT_ACTIVATION_DAYS = 7
+
+    SITE_ID = 1
+
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
