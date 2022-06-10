@@ -55,6 +55,7 @@ class Dev(Configuration):
 
         "rest_framework",
         "rest_framework.authtoken",
+        "drf_yasg",
 
         #myapps
         'blango_auth',
@@ -221,6 +222,13 @@ class Dev(Configuration):
     }
 
     INTERNAL_IPS = ['192.168.11.179']
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
 class Prod(Dev):
   DEBUG = False
